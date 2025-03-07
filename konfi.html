@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pesanan</title>
+    <style>
+        nav {
+            background-color: #4a148c;
+            padding: 32px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #fdd835;
+        }
+        .login-btn a {
+            background-color: #fdd835;
+            color: #4a148c;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .login-btn a:hover {
+            background-color: white;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h4 {
+            color: #4a148c;
+        }
+        .order-info p {
+            margin: 5px 0;
+        }
+        .payment-options {
+            margin: 15px 0;
+        }
+        .payment-options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4a148c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #fdd835;
+            color: #4a148c;
+        }
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+          
+        }
+        html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="homieelohim.html">Beranda</a></li>
+            <li><a href="Kamar.html">Kamar</a></li>
+        </ul>
+        <div class="login-btn">
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h4>Konfirmasi Pesanan</h4>
+        <div class="order-info">
+            <p><strong>Nama:</strong> Amiton Wanimbo</p>
+            <p><strong>Email:</strong> wanimbowean20@gmail.com</p>
+            <p><strong>No HP:</strong> 081361745804</p>
+            <p><strong>Jumlah Orang:</strong> 1 Orang</p>
+            <p><strong>Kamar:</strong> Elohim Suite</p>
+            <p><strong>Total Harga:</strong> <span style="color: red;">Rp 1.000.000</span></p>
+        </div>
+
+        <h4>Pilih Metode Bayar</h4>
+        <form id="paymentForm" action="lanjutkan_pembayaran.html" method="GET">
+            <div class="payment-options">
+                <label><input type="radio" name="metode_bayar" value="Transfer Bank"> Transfer Bank</label>
+                <label><input type="radio" name="metode_bayar" value="GoPay"> GoPay</label>
+                <label><input type="radio" name="metode_bayar" value="DANA"> DANA</label>
+            </div>
+            <button type="submit">Lanjut Bayar</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 Hotel Elohim Papua. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.getElementById("paymentForm").addEventListener("submit", function(event) {
+            let metodeBayar = document.querySelector('input[name="metode_bayar"]:checked');
+            if (!metodeBayar) {
+                alert("Pilih metode pembayaran terlebih dahulu!");
+                event.preventDefault(); // Mencegah form dikirim jika metode bayar belum dipilih
+            }
+        });
+    </script>
+</body>
+</html>

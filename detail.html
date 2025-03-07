@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Detail Kamar</title>
+    <style>
+        /* Navbar styling */
+        nav {
+            background-color: #4a148c;
+            padding: 32px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        nav ul li a:hover {
+            color: #fdd835;
+        }
+        
+        /* Login Button */
+        .login-btn {
+            margin-left: auto;
+        }
+        .login-btn a {
+            background-color: #fdd835;
+            color: #4a148c;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .login-btn a:hover {
+            background-color: white;
+        }
+
+        /* Main Content Styling */
+        .container {
+            margin: 30px auto;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Table Styling */
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            background-color: #ffffff;
+        }
+
+        /* Button */
+        .btn-pesan {
+            background: #4a148c;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .btn-pesan a {
+            text-decoration: none;
+            color: white;
+        }
+        .room button:hover {
+         
+            color: #4a148c;
+        }
+        .btn-pesan:hover {
+            background-color: #fdd835;
+            color: #4a148c;
+        }
+
+    
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+          
+        }
+        html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .login-btn {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="homieelohim.html">Beranda</a></li>
+            <li><a href="Kamar.html">Kamar</a></li>
+        </ul>
+        <div class="login-btn">
+            <a href="admin/dist/login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <img src="1.png" height="200px">
+        <p>
+            Elohim Suite. RP: 1.000,00      
+            <button class="btn-pesan"><a href="pesan.html">Pesan Sekarang</a></button>
+        </p>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>Free WiFi</td>
+                    <td>Bathroom</td>
+                    <td>Cable TV</td>
+                </tr>
+                <tr>
+                    <td>AC</td>
+                    <td>1 Bed</td>
+                    <td>Mini Bar</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>&copy; 2025 Hotel Elohim Papua. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

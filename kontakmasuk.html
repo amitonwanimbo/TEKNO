@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- For RTL verison -->
+<!-- <html lang="en" dir="rtl"> -->
+  <head>
+    <style>
+      #notifPopup {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: #fff;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+#notifPopup h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 2px solid #f1c40f;
+    padding-bottom: 5px;
+}
+
+#notifPopup p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+#notifPopup h4 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #f39c12;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#notifPopup h4:hover {
+    color: #e67e22;
+}
+
+#notifBtn {
+    background-color: #f39c12;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#notifBtn:hover {
+    background-color: #e67e22;
+}
+
+#notifBtn i {
+    margin-right: 5px;
+}
+
+/* Animasi Fade In-Out */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+#notifPopup.show {
+    animation: fadeIn 0.3s forwards;
+}
+
+#notifPopup.hide {
+    animation: fadeOut 0.3s forwards;
+}
+/* Warna latar belakang sidebar */
+.main-sidebar {
+    background-color: #2C3E50 !important; /* Warna biru tua */
+}
+
+/* Warna teks menu */
+.nav-sidebar .nav-link {
+    color: #ECF0F1 !important; /* Warna putih untuk teks */
+    font-weight: 500;
+}
+
+/* Warna latar belakang sidebar */
+.main-sidebar {
+    background-color: #2E7D32 !important; /* Hijau tua */
+}
+
+/* Warna teks menu */
+.nav-sidebar .nav-link {
+    color: #FFFFFF !important; /* Warna putih untuk teks */
+    font-weight: 500;
+}
+
+/* Hover effect */
+.nav-sidebar .nav-link:hover {
+    background-color: #388E3C !important; /* Hijau lebih terang */
+    color: #FFD700 !important; /* Warna emas saat hover */
+}
+
+/* Ikon untuk Beranda */
+.nav-sidebar .nav-item:nth-child(1) .nav-icon {
+    color: #4CAF50 !important; /* Hijau muda */
+}
+
+/* Ikon untuk Pesan Masuk */
+.nav-sidebar .nav-item:nth-child(2) .nav-icon {
+    color: #FFC107 !important; /* Kuning */
+}
+
+/* Warna aktif menu yang sedang dipilih */
+.nav-sidebar .nav-link.active {
+    background-color: #1B5E20 !important; /* Hijau tua pekat */
+    color: white !important;
+    font-weight: bold;
+}
+
+/* Animasi klik */
+.nav-sidebar .nav-link:active {
+    transform: scale(0.98);
+}
+
+
+
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Primary Meta Tags -->
+<title>Admin | Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="title" content="AdminLTE 4 | Dashboard">
+<meta name="author" content="ColorlibHQ">
+<meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS.">
+<meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard" />
+<!-- By adding ./css/dark/adminlte-dark-addon.css then the page supports both dark color schemes, and the page author prefers / default is light. -->
+<meta name="color-scheme" content="light dark">
+<!-- By adding ./css/dark/adminlte-dark-addon.css then the page supports both dark color schemes, and the page author prefers / default is dark. -->
+<!-- <meta name="color-scheme" content="dark light"> -->
+
+<!-- OPTIONAL LINKS -->
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css" integrity="sha256-WKijf8KI68sbq8Znd6yMepIuFF0wdWfIt6gk3JWcQfk=" crossorigin="anonymous">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<!-- REQUIRED LINKS -->
+
+<!-- Theme style -->
+<link rel="stylesheet" href="./css/adminlte.css">
+
+<!-- For RTL verison use ./css/rtl/adminlte.rtl.css, remove dist/css/adminlte.css -->
+<!-- <link rel="stylesheet" href="./css/rtl/adminlte.rtl.css""> -->
+
+<!-- For dark mode use ./css/dark/adminlte-dark-addon.css, do not remove dist/css/adminlte.css or if usinf RTL version do not remove ./css/rtl/adminlte.rtl.css-->
+<!-- ... and then the alternate CSS first as a snap-on for dark color scheme preference -->
+<!-- <link rel="stylesheet" href="./css/dark/adminlte-dark-addon.css" media="(prefers-color-scheme: dark)""> -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  </head>
+  <body class="layout-fixed">
+    <div class="wrapper">
+      <!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-light">
+  <div class="container-fluid">
+    <!-- Start navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-lte-toggle="sidebar-full" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-md-block">
+        <a href="index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-md-block">
+        <a href="kontakmasuk.html" class="nav-link">Pesan Masuk</a>
+      </li>
+    </ul>
+
+    <!-- End navbar links -->
+    <ul class="navbar-nav ms-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+      </li>
+
+    
+      
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <button class="btn btn-warning" type="button" id="notifBtn"><i class="fas fa-bell"></i> 1 Notifikasi</button>
+      <div id="notifPopup" style="display: none; position: absolute; top: 50px; right: 20px; background: white; padding: 15px; box-shadow: 0px 4px 6px rgba(0,0,0,0.1); border-radius: 5px;">
+        <h3>Notifikasi</h3>
+        <div>
+            <p>🔔 Pembayaran berhasil!</p>
+            <h4>Lihat Transaksi</h4>
+            <p><strong>Nama:</strong> Amiton Wanimbo</p>
+            <p><strong>Total:</strong> Rp 1.000.000</p>
+            <p><strong>Kamar:</strong> Elohim Suite</p>
+            <p><strong>Status:</strong> Berhasil</p>
+        </div>
+      </div>
+      <script>
+        document.getElementById('notifBtn').addEventListener('click', function() {
+          var popup = document.getElementById('notifPopup');
+          popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+        });
+      </script>
+      </li>
+      <li class="nav-item dropdown user-menu">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+          <img src="./assets/img/image.png" class="user-image img-circle shadow" alt="User Image">
+          <span class="d-none d-md-inline">Amiton Wanimbo</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+          <!-- User image -->
+          <li class="user-header bg-primary">
+            <img src="./assets/img/image.png" class="img-circle shadow" alt="User Image">
+
+            <p>
+             Admin
+              <small>Dari 2021</small>
+            </p>
+          </li>
+          <!-- Menu Body -->
+         
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <a href="#" class="btn btn-default btn-flat">Profile</a>
+            <a href="login.html" class="btn btn-default btn-flat float-end">Sign out</a>
+          </li>
+        </ul>
+      </li>
+    
+    </ul>
+  </div>
+</nav>
+<!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-bg-dark sidebar-color-warning shadow">
+        <div class="brand-container">
+          <a href="javascript:;" class="brand-link">
+            <img src="./assets/img/logo.png" alt="AdminLTE Logo" class="brand-image opacity-80 shadow">
+            <span class="brand-text fw-light">HES PAPUA</span>
+          </a>
+          <a class="pushmenu mx-1" data-lte-toggle="sidebar-mini" href="javascript:;" role="button">
+            <i class="fas fa-angle-double-left"></i>
+          </a>
+        </div>
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <nav class="mt-2">
+            <!-- Sidebar Menu -->
+            <ul class="nav nav-pills nav-sidebar flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  <i class="nav-icon fas fa-home"></i> <!-- Ikon rumah untuk Beranda -->
+                  <p>Beranda</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./kontakmasuk.html" class="nav-link">
+                  <i class="nav-icon fas fa-envelope"></i> <!-- Ikon amplop untuk Pesan Masuk -->
+                  <p>Pesan Masuk</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Main content -->
+      <main class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <div class="fs-3">Beranda</div>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Dafat Pesan</li>
+                </ol>
+              </div>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>No HP</th>
+                    <th>Jumlah Orang</th>
+                    <th>Harga</th>
+                    <th>Kamar</th>
+                    <th>Status</th>
+                    <th style="width: 40px">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1.</td>
+                    <td>Amiton Wanimbo</td>
+                    <td>Wanimboamiton20@gmail.com</td>
+                    <td>081361745804</td>
+                    <td>1 Orang</td>
+                    <td>Rp1.000.000</td>
+                    <td>Elohim Suite</td>
+                    <td><span class="badge bg-warning">Menunggu Konfirmasi</span></td>
+                    <td><button class="btn btn-warning btn-sm">Konfirmasi</button></td>
+                  </tr>
+                  <tr>
+                    <td>2.</td>
+                    <td>Amiton Wanimbo</td>
+                    <td>Wanimboamiton20@gmail.com</td>
+                    <td>081361745804</td>
+                    <td>1 Orang</td>
+                    <td>Rp1.000.000</td>
+                    <td>Elohim Suite</td>
+                    <td><span class="badge bg-success">Berhasil</span></td>
+                    <td><button class="btn btn-success btn-sm">Berhasil</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+            
+
+      </main>
+      <!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+<footer class="main-footer">
+  <!-- To the end -->
+  <div class="float-end d-none d-sm-inline">
+    Anything you want
+  </div>
+  <!-- Default to the start -->
+  <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+</footer>
+
+    </div>
+    <!--  ./wrapper -->
+
+    <!-- OPTIONAL SCRIPTS -->
+
+<!-- overlayScrollbars -->
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/OverlayScrollbars.min.js" integrity="sha256-7mHsZb07yMyUmZE5PP1ayiSGILxT6KyU+a/kTDCWHA8=" crossorigin="anonymous"></script>
+<!-- Bootstrap 5 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha256-9SEPo+fwJFpMUet/KACSwO+Z/dKMReF9q4zFhU/fT9M=" crossorigin="anonymous"></script>
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- AdminLTE App -->
+<script src="./js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+
+<script>
+  const SELECTOR_SIDEBAR = '.sidebar'
+  const Default = {
+    scrollbarTheme: 'os-theme-light',
+    scrollbarAutoHide: 'leave'
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof OverlayScrollbars !== 'undefined') {
+      OverlayScrollbars(document.querySelectorAll(SELECTOR_SIDEBAR), {
+        className: Default.scrollbarTheme,
+        sizeAutoCapable: true,
+        scrollbars: {
+          autoHide: Default.scrollbarAutoHide,
+          clickScrolling: true
+        }
+      })
+    }
+  })
+</script>
+
+
+    <!-- OPTIONAL SCRIPTS -->
+
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js" integrity="sha256-7lWo7cjrrponRJcS6bc8isfsPDwSKoaYfGIHgSheQkk=" crossorigin="anonymous"></script>
+    <script>
+      // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
+      // IT'S ALL JUST JUNK FOR DEMO
+      // ++++++++++++++++++++++++++++++++++++++++++
+
+      
+    </script>
+  </body>
+</html>

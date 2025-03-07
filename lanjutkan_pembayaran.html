@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Kamar Hotel</title>
+    <style>
+     
+     nav {
+        background-color: #4a148c;
+        padding: 32px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #fdd835;
+        }
+        .login-btn {
+            margin-left: auto;
+        }
+        .login-btn a {
+            background-color: #fdd835;
+            color: #4a148c;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .login-btn a:hover {
+            background-color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+          
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            background-color: #4a148c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #fdd835;
+            color: #4a148c;
+        }
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+          
+        }
+        html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="homieelohim.html">Beranda</a></li>
+            <li><a href="Kamar.html">Kamar</a></li>
+        </ul>
+        <div class="login-btn">
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Detail Pembayaran</h2>
+        <table>
+            <tr>
+                <th>Nama</th>
+                <td>Amiton Wanimbo</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>Wanimboamiton20@gmail.com</td>
+            </tr>
+            <tr>
+                <th>No HP</th>
+                <td>081361745804</td>
+            </tr>
+            <tr>
+                <th>Jumlah Orang</th>
+                <td>1 Orang</td>
+            </tr>
+            <tr>
+                <th>Kamar</th>
+                <td>Elohim Suite</td>
+            </tr>
+            <tr>
+                <th>Metode Pembayaran</th>
+                <td>Bank Transfer</td>
+            </tr>
+            <tr>
+                <th>Total Harga</th>
+                <td><strong>Rp 1.000.000</strong></td>
+            </tr>
+        </table>
+
+        <h3>Silakan Transfer ke Rekening Berikut:</h3>
+        <p><strong>BANK BCA:</strong> 12346589987 - Hotel Elohim</p>
+        <p><strong>GoPay:</strong> 0812-3456-7890</p>
+        <p><strong>DANA:</strong> 0812-3456-7890</p>
+        
+        <h4>Masukan Bukti Pembayaran</h4>
+        <form action="konfir_untuk_sukses.html">
+            <input type="file" id="bukti" name="bukti" accept="image/*" required><br><br>
+            <button type="submit">Konfirmasi Bayar</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 Hotel Elohim Papua. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
